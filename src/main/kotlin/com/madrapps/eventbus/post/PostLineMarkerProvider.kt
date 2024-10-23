@@ -57,7 +57,7 @@ private class PostLineMarkerInfo(
 ) : LineMarkerInfo<PsiElement>(
     psiElement,
     psiElement.textRange,
-    IconLoader.getIcon("/icons/greenrobot.png"),
+    Icons.ROBOT_ICON,
     null,
     { event, element ->
         ReadAction.nonBlocking {

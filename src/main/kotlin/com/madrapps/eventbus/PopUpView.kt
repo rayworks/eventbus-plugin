@@ -29,7 +29,7 @@ import com.intellij.util.ui.ColumnInfo
 import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import org.jetbrains.java.debugger.breakpoints.properties.JavaBreakpointProperties
-import org.jetbrains.kotlin.idea.refactoring.getLineNumber
+import org.jetbrains.kotlin.idea.base.psi.getLineNumber
 import org.jetbrains.kotlin.psi.psiUtil.startOffset
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.UFile
@@ -209,7 +209,7 @@ private class ShowUsagesAction(
     }
 
     override fun actionPerformed(e: AnActionEvent) {
-        closePopUp(e.inputEvent)
+        e.inputEvent?.let { closePopUp(it) }
         val toArray = usages.toTypedArray()
         val usageViewPresentation = UsageViewPresentation()
         usageViewPresentation.tabText = "Type"
@@ -232,7 +232,7 @@ private class SetBreakpointAction(
     AllIcons.Debugger.Db_set_breakpoint
 ) {
     override fun actionPerformed(e: AnActionEvent) {
-        closePopUp(e.inputEvent)
+        e.inputEvent?.let { closePopUp(it) }
         val breakpointManager = DebuggerManagerEx.getInstanceEx(e.project!!).breakpointManager
         usages.forEach {
             val containingFile = it.file()
@@ -290,7 +290,7 @@ private class RemoveBreakpointAction(
     AllIcons.Debugger.MuteBreakpoints
 ) {
     override fun actionPerformed(e: AnActionEvent) {
-        closePopUp(e.inputEvent)
+        e.inputEvent?.let { closePopUp(it) }
         val project = e.project!!
         val breakpointManager = DebuggerManagerEx.getInstanceEx(project).breakpointManager
         val documentManager = PsiDocumentManager.getInstance(project)

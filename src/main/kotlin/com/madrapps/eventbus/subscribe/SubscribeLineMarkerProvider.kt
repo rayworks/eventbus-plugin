@@ -14,7 +14,7 @@ import com.intellij.ui.awt.RelativePoint
 import com.intellij.usageView.UsageInfo
 import com.intellij.usages.UsageInfo2UsageAdapter
 import com.intellij.util.concurrency.AppExecutorUtil
-import com.madrapps.eventbus.blog
+import com.madrapps.eventbus.*
 import com.madrapps.eventbus.getParentOfTypeCallExpression
 import com.madrapps.eventbus.post.isPost
 import com.madrapps.eventbus.search
@@ -69,7 +69,7 @@ private class SubscribeLineMarkerInfo(
 ) : LineMarkerInfo<PsiElement>(
     psiElement,
     psiElement.textRange,
-    IconLoader.getIcon("/icons/greenrobot.png"),
+    Icons.ROBOT_ICON,
     null,
     { event, element ->
         ReadAction.nonBlocking {
